@@ -45,34 +45,15 @@ public class BookService
 	}
 	
 	public List<Book> getByTitle(String title){
-		List<Book> books = new ArrayList<>();
-		for (Book book : bookRepo.findAll()) {
-			if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
-				books.add(book);
-			}
-		}
-		return books;
+		return bookRepo.findByTitleContainingIgnoreCase(title);
 	}
 	
 	public List<Book> getByAuthor(String author){
-		List<Book> books = new ArrayList<>();
-		for (Book book : bookRepo.findAll()) {
-			if (book.getAuthor().toLowerCase().contains(author.toLowerCase())) {
-				books.add(book);
-			}
-		}	
-		return books;
+		return bookRepo.findByAuthorContainingIgnoreCase(author);
 	}
 	
 	public List<Book> getByTitleAndAuthor(String title, String author){
-		List<Book> books = new ArrayList<>();
-		for (Book book : bookRepo.findAll()) {
-			if (book.getTitle().toLowerCase().contains(title.toLowerCase()) &&
-				book.getAuthor().toLowerCase().contains(author.toLowerCase())) {
-				books.add(book);
-			}
-		}
-		return books;
+		return bookRepo.findByTitleContainingIgnoreCaseAndAuthorContainingIgnoreCase(title, author);
 	}
 		
 	public List<Book> searchBooks(String title, String author){
