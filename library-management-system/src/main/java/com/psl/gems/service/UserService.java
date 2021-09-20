@@ -36,5 +36,10 @@ public class UserService
 		users = usRepo.findByName(name);
 		return users;
 	}
+	
+	public User getByUsername(String username) {
+		User user= usRepo.findByUsername(username).get();
+		return user;
+	}
 
 }
