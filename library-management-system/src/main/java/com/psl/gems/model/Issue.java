@@ -4,7 +4,11 @@ import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -12,13 +16,17 @@ import javax.persistence.ManyToOne;
 public class Issue {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-			fetch = FetchType.LAZY)
-	private Book book;
+			fetch = FetchType.EAGER)
+	private BookObj bookObj;
 	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-			fetch = FetchType.LAZY)
+			fetch = FetchType.EAGER)
 	private User users;
+	
+	@Enumerated(EnumType.ORDINAL)
+	private IssueStatus status;
 	
 	private LocalDate issueDate;
 	private LocalDate returnDate;
@@ -30,11 +38,11 @@ public class Issue {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Book getBook() {
-		return book;
+	public BookObj getBookObj() {
+		return bookObj;
 	}
-	public void setBook(Book book) {
-		this.book = book;
+	public void setBookObj(BookObj bookObj) {
+		this.bookObj = bookObj;
 	}
 	public User getUsers() {
 		return users;
@@ -54,12 +62,15 @@ public class Issue {
 	public void setReturnDate(LocalDate returnDate) {
 		this.returnDate = returnDate;
 	}
+	public IssueStatus getStatus() {
+		return status;
+	}
+	public void setStatus(IssueStatus status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
-		return "Issue [id=" + id + ", book=" + book + ", users=" + users + ", issueDate=" + issueDate + ", returnDate="
-				+ returnDate + "]";
+		return "Issue [id=" + id + ", bookObj=" + bookObj + ", users=" + users + ", status=" + status + ", issueDate="
+				+ issueDate + ", returnDate=" + returnDate + "]";
 	}
-	
-
-	
 }

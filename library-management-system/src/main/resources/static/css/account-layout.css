@@ -71,6 +71,7 @@ label {
   display: inline-block;
 }
 
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -84,6 +85,7 @@ textarea {
   border-radius: 4px;
   resize: vertical;
 }
+
 
 input[type="submit"] {
   background-color: #47a153;
