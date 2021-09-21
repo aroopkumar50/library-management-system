@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 	<head>
 		<title>Your Book</title>
-		<link rel="stylesheet" type="text/css" href="../../static/css/account-layout.css"/>
+		<link rel="stylesheet" type="text/css" href="@{/css/account-layout.css}"/>
 	</head>
 	<body>
 		<ul th:replace="user-home :: nav"></ul>

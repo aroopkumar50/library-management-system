@@ -1,13 +1,16 @@
 package com.psl.gems.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.psl.gems.dao.UserRepository;
 import com.psl.gems.model.User;
 
+@Service
 public class UserService 
 {
 	@Autowired

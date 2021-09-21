@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html>
-
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
     <title>Login</title>
 
-    <link rel="stylesheet" type="text/css" href="../../static/css/log-register.css">
+    <link rel="stylesheet" type="text/css" th:href="@{CSS/log-register.css}">
 </head>
 
 <body>
     <div class="wrapper">
         <div class="container">
-            <form>
+            <form th:action="@{/login}" method="POST">
 
                 <!--<div class="alert alert-error">
                     <small class="incorrect">Invalid username and password.</small>
@@ -40,14 +39,14 @@
                 </div>
 
                 <div class="form-actions">
-                    <input type="submit" value="Register">
                     <input type="submit" value="Login">
                 </div>
 
             </form>
 
-            <form method="GET">
+            <form th:action="@{/register}" method="GET">
                 <div class="row">
+                	<input type="submit" value="Register">
                 </div>
             </form>
         </div>
