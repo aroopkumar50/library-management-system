@@ -33,4 +33,8 @@ public class BookObjService {
 	public void delete(BookObj bookObj) {
 		bookObjRepository.delete(bookObj);
 	}
+	
+	public void deleteByBook(Book book) {
+		bookObjRepository.deleteByBook(book);
+	}
 }
