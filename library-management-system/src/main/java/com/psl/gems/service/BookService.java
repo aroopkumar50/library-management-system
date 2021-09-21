@@ -75,6 +75,10 @@ public class BookService
 		bookRepo.deleteById(bookId);
 	}
 	
+	public boolean checkAvailabilityById(long bookId) {
+		return bookRepo.checkAvailabilityById(bookId) == 1;
+	}
+	
 //	public List<Book> getUnprocessedBookReservations(){
 //		List<Book> unprocessedBookReservations = new ArrayList<Book>();
 //		for (Book book : bookRepo.findAll()) {
