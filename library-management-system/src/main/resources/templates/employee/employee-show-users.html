@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Users</title>
     <!-- <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}"> -->
     <link rel="stylesheet" href="../../static/css/account-layout.css">
+    <title>Users</title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
                 <li><a href="#/employee">Home</a></li>
                 <li><a href="#/employee/users/showusers">Users</a></li>
                 <li><a href="#/employee/books/showbooks">Catalog</a></li>
-                <li><a href="#/employee/orders">Place Order</a></li>
+                <li><a href="#/employee/orders">Issue Books</a></li>
                 <li><a href="#/employee/returnedbooks">Return Books</a></li>
                 <li><a href="#/employee/reservations">Process Reservations</a></li>
                 <li style="float:right"><a class="active" href="#logout">Logout</a></li>
@@ -31,8 +31,8 @@
 
             <div class="row">
 
-                <form th:action="@{/employee/users/showusers}" method="GET">
-                    <div class="col-25">
+                <form th:action="#@{/employee/users/showusers}" method="GET">
+                    <!-- <div class="col-25">
                         <label for="firstName">First Name</label>
                     </div>
                     <div class="col-75">
@@ -44,36 +44,54 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="lastName" name="lastName">
+                    </div> -->
+                    <div class="col-25">
+                        <label for="userId">User ID</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="userId" name="userId">
+                    </div>
+
+                    <div class="col-25">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="name" name="name">
                     </div>
                     <div>
                         <input type="submit" value="Search">
                     </div>
                 </form>
 
-                <form th:action="@{/employee/users/showusers}" method="GET">
+                <form th:action="#@{/employee/users/showusers}" method="GET">
                     <input style="margin-left: 20px" type="submit" value="Show all users" name="showAllUsers">
                 </form>
             </div>
             <br />
             <table th:if="${usersWithFines.size > 0}" id="tablestyle">
                 <tr>
-                    <th>First Name</th>
+                    <!-- <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Phone Number</th>
-                    <th>Fine</th>
+                    <th>Fine</th> -->
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <!-- <th>Email</th> -->
                     <th style="width: 150px">Action</th>
                 </tr>
 
                 <tr th:each="user : ${usersWithFines}">
-                    <td th:text="${user.key.firstName}"></td>
+                    <!-- <td th:text="${user.key.firstName}"></td>
                     <td th:text="${user.key.lastName}"></td>
                     <td th:text="${user.key.email}"></td>
                     <td th:text="${user.key.phoneNumber}"></td>
                     <td th:if="${user.value > 0}" style="color:red" th:text="${'$ ' + user.value}"></td>
-                    <td th:if="${user.value == 0}" th:text="${'$ ' + user.value}"></td>
+                    <td th:if="${user.value == 0}" th:text="${'$ ' + user.value}"></td> --> 
+                    <td th:text="${user.key.userId}"></td>
+                    <td th:text="${user.key.name}"></td>
                     <td>
-                        <form th:action="@{/employee/users/showuserinfo}" method="GET">
+                        <form th:action="#@{/employee/users/showuserinfo}" method="GET">
                             <input class="table" type="submit" value="Show user info">
                             <input type="hidden" th:value="${user.key.userId}" name="userId">
                             <input type="hidden" th:value="${user.value}" name="fine">

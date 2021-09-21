@@ -29,6 +29,15 @@
 
         <div class="row">
             <div class="col-50">
+                ISBN:
+            </div>
+            <div class="col-75">
+                <text th:text="${book.bookId}"></text>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
                 Title:
             </div>
             <div class="col-75">
@@ -45,7 +54,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-50">
                 Release year:
             </div>
@@ -61,13 +70,14 @@
             <div class="col-75">
                 <text th:text="${book.edition}"></text>
             </div>
-        </div>
+        </div> -->
 
-        <p><b><text th:text="${user.firstName + ' ' + user.lastName}"></b> will receive a notification.</p>
+        <!-- <p><b><text th:text="${user.firstName + ' ' + user.lastName}"></b> will receive a notification.</p> -->
+        <p><b><text th:text="${user.Name}"></b> will receive a notification.</p>
 
         <div class="row">
             <div class="col-50">
-                <form th:action="@{/employee/updatebookreservation}" th:method="PUT">
+                <form th:action="#@{/employee/updatebookreservation}" th:method="PUT">
                     <input type="submit" value="Yes">
                     <input type="hidden" th:name="_method" th:value="PUT">
                     <input type="hidden" th:name="bookId" th:value="${book.bookId}">
@@ -75,7 +85,7 @@
                 </form>
             </div>
             <div class="col-50">
-                <form th:action="@{/employee/reservations}" method="GET">
+                <form th:action="#@{/employee/reservations}" method="GET">
                     <input style="background-color: red" type="submit" value="No">
                 </form>
             </div>

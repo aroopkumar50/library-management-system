@@ -3,17 +3,39 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Are you sure?</title>
-
     <!-- <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}"> -->
     <link rel="stylesheet" href="../../static/css/account-layout.css">
+    <title>Are you sure?</title>
 </head>
 
 <body>
-
+    <!-- <ul th:replace="page-layout :: employeeNavBar"></ul> -->
+    <div class="nav">
+        <ul>
+        <li><a href="#/employee">Home</a></li>
+        <li><a href="#/employee/users/showusers">Users</a></li>
+        <li><a href="#/employee/books/showbooks">Catalog</a></li>
+        <li><a href="#/employee/orders">Issue Books</a></li>
+        <li><a href="#/employee/returnedbooks">Return Books</a></li>
+        <li><a href="#/employee/reservations">Process Reservations</a></li>
+        <li style="float: right">
+            <a class="active" href="#logout">Logout</a>
+        </li>
+        </ul>
+    </div>
+    
     <div class="container">
 
         <h3>Are you sure you want to delete this book?</h3>
+
+        <div class="row">
+            <div class="col-50">
+                <label>ISBN:</label>
+            </div>
+            <div class="col-75">
+                <label th:text="${deleteBook.bookId}"></label>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-50">
@@ -33,7 +55,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-50">
                 <label>Release Year:</label>
             </div>
@@ -49,7 +71,7 @@
             <div class="col-75">
                 <label th:text="${deleteBook.edition}"></label>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-50">

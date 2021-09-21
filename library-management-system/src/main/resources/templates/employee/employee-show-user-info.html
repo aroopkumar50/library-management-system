@@ -15,7 +15,7 @@
             <li><a href="#/employee">Home</a></li>
             <li><a href="#/employee/users/showusers">Users</a></li>
             <li><a href="#/employee/books/showbooks">Catalog</a></li>
-            <li><a href="#/employee/orders">Place Order</a></li>
+            <li><a href="#/employee/orders">Issue Books</a></li>
             <li><a href="#/employee/returnedbooks">Return Books</a></li>
             <li><a href="#/employee/reservations">Process Reservations</a></li>
             <li style="float:right"><a class="active" href="#logout">Logout</a></li>
@@ -35,6 +35,15 @@
 
         <div class="row">
             <div class="col-50">
+                User ID:
+            </div>
+            <div class="col-75">
+                <text th:text="${user.userId}">
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-50">
                 First name:
             </div>
             <div class="col-75">
@@ -50,9 +59,18 @@
             <div class="col-75">
                 <text th:text="${user.lastName}">
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
+            <div class="col-50">
+                Name:
+            </div>
+            <div class="col-75">
+                <text th:text="${user.firstName}" />
+            </div>
+        </div>
+
+        <!-- <div class="row">
             <div class="col-50">
                 Email:
             </div>
@@ -68,9 +86,9 @@
             <div class="col-75">
                 <text th:text="${user.address}">
             </div>
-        </div>
+        </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-50">
                 City:
             </div>
@@ -94,58 +112,62 @@
             </div>
             <div class="col-75" th:if="${fine > 0}">
                 <text style="color:red" th:text="${'$ ' + fine}">
-            </div>
+            </div> -->
 
-            <div class="col-75" th:if="${fine == 0}">
+            <!-- <div class="col-75" th:if="${fine == 0}">
                 <text th:text="${'$ ' + fine}">
-            </div>
-        </div>
+            </div> 
+        </div> -->
 
         <h4>Books in use</h4>
 
-        <div th:if="${user.books.size() == 0}">
+        <!-- <div th:if="${user.books.size() == 0}">
             No books in use.
-        </div>
+        </div> -->
         <table id="tablestyle" th:if="${user.books.size() > 0}">
             <tr>
+                <th>ISBN</th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Release Year</th>
-                <th>Edition</th>
+                <!-- <th>Release Year</th>
+                <th>Edition</th> -->
                 <th>Return Date</th>
-                <th>Fine</th>
+                <!-- <th>Fine</th> -->
             </tr>
             <tr th:each="book : ${booksInUse}">
+                <td th:text="${book.key.bookId}"></td>
                 <td th:text="${book.key.title}"></td>
                 <td th:text="${book.key.author}"></td>
-                <td th:text="${book.key.releaseYear}"></td>
-                <td th:text="${book.key.edition}"></td>
+                <!-- <td th:text="${book.key.releaseYear}"></td>
+                <td th:text="${book.key.edition}"></td> -->
                 <td th:text="${book.key.returnDate}"></td>
-                <td th:if="${book.value > 0}" style="color:red" th:text="${'$ ' + book.value}"></td>
-                <td th:if="${book.value == 0}" th:text="${'$ ' + book.value}"></td>
+                <!-- <td th:if="${book.value > 0}" style="color:red" th:text="${'$ ' + book.value}"></td>
+                <td th:if="${book.value == 0}" th:text="${'$ ' + book.value}"></td> -->
             </tr>
         </table>
 
         <h4>Reserved books</h4>
 
-        <div th:if="${user.reservedBooks.size() == 0}">
+        <!-- <div th:if="${user.reservedBooks.size() == 0}">
             No books reserved.
-        </div>
+        </div> -->
 
         <table id="tablestyle" th:if="${user.reservedBooks.size() > 0}">
             <tr>
+                <th>ISBN</th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Release Year</th>
-                <th>Edition</th>
+                <!-- <th>Release Year</th>
+                <th>Edition</th> -->
                 <th>Reserved from</th>
                 <th>Reserved until</th>
             </tr>
             <tr th:each="book : ${user.reservedBooks}">
+                <td th:text="${book.bookId}"></td>
                 <td th:text="${book.title}"></td>
                 <td th:text="${book.author}"></td>
-                <td th:text="${book.releaseYear}"></td>
-                <td th:text="${book.edition}"></td>
+                <!-- <td th:text="${book.releaseYear}"></td>
+                <td th:text="${book.edition}"></td> -->
                 <td th:text="${book.startReservationDate}"></td>
                 <td th:text="${book.endReservationDate}"></td>
             </tr>
