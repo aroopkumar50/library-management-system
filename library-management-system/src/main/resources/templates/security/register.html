@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Register</title>
-	<link rel="stylesheet" type="text/css" href="../../static/css/log-register.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/log-register.css}">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 	<div class="wrapperRegister">
 		<div class="containerRegister">
 
-			<form method="POST">
+			<form th:action="@{/register/save}" th:object="${newAccount}" method="POST">
 
 				<p><b>Account details</b></p>
 
