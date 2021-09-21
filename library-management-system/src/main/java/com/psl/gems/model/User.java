@@ -10,11 +10,12 @@ public class User {
 		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int user_id;
-	String name;
-	String role;
-	String username;
-	String password;
+	private int user_id;
+	private String name;
+	private String role="member";
+	private String username;
+	private String password;
+	private boolean enabled=true;
 	
 	public int getUser_id() {
 		return user_id;

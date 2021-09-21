@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.psl.gems.dao.BookObjRepository;
 import com.psl.gems.dao.BookRepository;
@@ -17,6 +18,9 @@ import com.psl.gems.model.User;
 
 @SpringBootApplication
 public class LibraryManagementSystemApplication {
+	
+	@Autowired
+	BCryptPasswordEncoder pwEncoder;
 	
 	@Autowired
 	UserRepository userRepository;
@@ -38,7 +42,7 @@ public class LibraryManagementSystemApplication {
 			User user = new User();
 			user.setName("Admin");
 			user.setUsername("admin");
-			user.setPassword("user");
+			user.setPassword(pwEncoder.encode("test"));
 			user.setRole("librarian");
 			userRepository.save(user);
 			for (User usr : userRepository.findAll()) {
