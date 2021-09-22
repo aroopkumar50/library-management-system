@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="ISO-8859-1" />
-    <!-- <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}"> -->
-    <link rel="stylesheet" href="../../static/css/account-layout.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{CSS/account-layout.css}">
+    <!-- link rel="stylesheet" href="../../static/css/account-layout.css" /> -->
     <title>Employee-Home</title>
   </head>
 
@@ -12,7 +12,7 @@
       <!-- <ul th:replace="page-layout :: employeeNavBar"></ul> -->
       <div class="nav">
         <ul>
-          <li><a href="#/employee">Home</a></li>
+          <li><a href="/employee">Home</a></li>
           <li><a href="#/employee/users/showusers">Users</a></li>
           <li><a href="#/employee/books/showbooks">Catalog</a></li>
           <li><a href="#/employee/orders">Issue Books</a></li>
@@ -24,7 +24,7 @@
         </ul>
       </div>
 
-      <div class="notify">
+      <!--  div class="notify">
         <h3>Notifications</h3>
         <div th:if="${currentUser.notifications.size() == 0}">
           <p>There are no notifications.</p>
@@ -43,7 +43,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div-->
     </div>
   </body>
 </html>
