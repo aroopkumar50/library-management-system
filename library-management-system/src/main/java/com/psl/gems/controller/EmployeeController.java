@@ -55,29 +55,13 @@ public class EmployeeController
 			@RequestParam (required=false)String name,
 			@RequestParam (required=false)String user_id,
 			@RequestParam (required=false)String showAllUsers) {
-		
-		System.out.println("Initial");
-		System.out.println(user_id);
-		System.out.println(name);
-		System.out.println(showAllUsers);
-		System.out.println("Initial");
-		
 		List<User> users = new ArrayList<User>();
-		
 		if (showAllUsers != null) users = usService.findAll();
 		else if (name != null && !name.equals("")) users = usService.getByName(name);
 		else if (user_id != null) {
-			System.out.println(user_id);
 			users.add(usService.findById(Integer.parseInt(user_id)));
-		}
-			
-		
-		for(User user : users) {
-			System.out.println(user + "\n");
-		}
-		
-		model.addAttribute("users", users);
-						
+		}	
+		model.addAttribute("users", users);				
 		return "employee/employee-show-users.html";	
 	}
 	
