@@ -1,15 +1,23 @@
 package com.psl.gems.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Book {
 	
 	@Id
-	long ISBN;
-	String title;
-	String author;
+	private long ISBN;
+	private String title;
+	private String author;
+	
+	@OneToMany(mappedBy = "book", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
+	private Set<BookObj> bookObjs;
 	
 	
 	public long getISBN() {
