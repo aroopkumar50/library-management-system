@@ -1,6 +1,11 @@
 package com.psl.gems.controller;
 
+
 import java.util.ArrayList;
+
+
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +46,7 @@ public class EmployeeController
 		int currentUserId = currentUserFinder.getCurrentUserId();
 		User currentUser = usService.findById(currentUserId);
 		model.addAttribute("currentUser", currentUser);
-//		User currentUser = currentUserFinder.getCurrentUser();
-//		model.addAttribute("currentUser",currentUser);
+
 		return"employee/employee-home.html";
 	}
 	
@@ -126,4 +130,6 @@ public class EmployeeController
 	}
 	
 	// changeBookInfo(), updateBookInfo(), returnBooks(), reservations()
+
 }
+
