@@ -3,19 +3,19 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Logout</title>
-<link rel="stylesheet" type="text/css" href="../../static/css/account-layout.css">
+<link rel="stylesheet" th:href="@{CSS/account-layout.css}">
 </head>
+
 <body>
-	 <form>
-    	
-    	<div class="wrapperLogout">
-	  		<div class="containerLogout">
-	  			<p>Are you sure you want to log out?</p>
-    	 		<input class="logoutButton" type="submit" value="Logout"/>
- 			</div>
- 		</div>
- 	
- 	
- 	</form>
+	<div class="container">
+	<form th:action="@{/logout}" method="post">
+
+		<p>Are you sure you want to log out?</p>
+		<input class="logoutButton" type="submit" value="Logout" />
+
+
+	</form>
+	</div>
 </body>
+
 </html>
