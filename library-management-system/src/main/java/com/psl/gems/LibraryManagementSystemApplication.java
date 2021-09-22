@@ -39,24 +39,24 @@ public class LibraryManagementSystemApplication {
 	@Transactional
 	InitializingBean initialCode() {
 		return () -> {
-			User user = new User();
-			user.setName("Admin");
-			user.setUsername("admin");
-			user.setPassword(pwEncoder.encode("test"));
-			user.setRole("librarian");
-			userRepository.save(user);
-			for (User usr : userRepository.findAll()) {
-				System.out.println(usr);
-			}
-			
-//			Book book = new Book();
-//			book.setISBN(1);
-//			book = bookRepository.save(book);
-//			BookObj bookObj = new BookObj();
-//			bookObj.setBook(book);
-//			bookObj = bookObjRepository.save(bookObj);
+//			User user = new User();
+//			user.setName("Admin");
+//			user.setUsername("admin");
+//			user.setPassword(pwEncoder.encode("test"));
+//			user.setRole("librarian");
+//			userRepository.save(user);
+//			for (User usr : userRepository.findAll()) {
+//				System.out.println(usr);
+//			}
 //			
-//			System.out.println(bookObjRepository.findFirstAvailableCopyByBookId(book.getISBN()));
+////			Book book = new Book();
+////			book.setISBN(1);
+////			book = bookRepository.save(book);
+////			BookObj bookObj = new BookObj();
+////			bookObj.setBook(book);
+////			bookObj = bookObjRepository.save(bookObj);
+////			
+////			System.out.println(bookObjRepository.findFirstAvailableCopyByBookId(book.getISBN()));
 		};
 	}
 
