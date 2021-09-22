@@ -44,5 +44,6 @@ public class UserService
 		User user= usRepo.findByUsername(username).get();
 		return user;
 	}
+	
 
 }
