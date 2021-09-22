@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <!-- <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}"> -->
-    <link rel="stylesheet" href="../../static/css/account-layout.css">
+    <!--<link rel="stylesheet" href="../../static/css/account-layout.css">  -->
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
     <title>Users</title>
 </head>
 
@@ -14,13 +15,13 @@
         <!-- <ul th:replace="page-layout :: employeeNavBar"></ul> -->
         <div class="nav">
             <ul>
-                <li><a href="#/employee">Home</a></li>
-                <li><a href="#/employee/users/showusers">Users</a></li>
-                <li><a href="#/employee/books/showbooks">Catalog</a></li>
-                <li><a href="#/employee/orders">Issue Books</a></li>
-                <li><a href="#/employee/returnedbooks">Return Books</a></li>
-                <li><a href="#/employee/reservations">Process Reservations</a></li>
-                <li style="float:right"><a class="active" href="#logout">Logout</a></li>
+                <li><a href="/employee">Home</a></li>
+                <li><a href="/employee/users/showusers">Users</a></li>
+                <li><a href="/employee/books/showbooks">Catalog</a></li>
+                <li><a href="/employee/orders">Issue Books</a></li>
+                <li><a href="/employee/returnedbooks">Return Books</a></li>
+                <li><a href="/employee/reservations">Process Reservations</a></li>
+                <li style="float:right"><a class="active" href="logout">Logout</a></li>
             </ul>
         </div>
 
@@ -31,7 +32,7 @@
 
             <div class="row">
 
-                <form th:action="#@{/employee/users/showusers}" method="GET">
+                <form th:action="@{/employee/users/showusers}" method="GET">
                     <!-- <div class="col-25">
                         <label for="firstName">First Name</label>
                     </div>
@@ -63,18 +64,18 @@
                     </div>
                 </form>
 
-                <form th:action="#@{/employee/users/showusers}" method="GET">
+                <form th:action="@{/employee/users/showusers}" method="GET">
                     <input style="margin-left: 20px" type="submit" value="Show all users" name="showAllUsers">
                 </form>
             </div>
             <br />
-            <table th:if="${usersWithFines.size > 0}" id="tablestyle">
+              table th:if="${usersWithFines.size > 0}" id="tablestyle">
                 <tr>
                     <!-- <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Phone Number</th>
-                    <th>Fine</th> -->
+                    <th>Fine</th>
                     <th>User ID</th>
                     <th>Name</th>
                     <!-- <th>Email</th> -->
@@ -99,7 +100,7 @@
                     </td>
                 </tr>
 
-            </table>
+            </table-->
 
         </div>
     </body>

@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <!-- <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}"> -->
-    <link rel="stylesheet" href="../../static/css/account-layout.css">
+    <!-- <link rel="stylesheet" href="../../static/css/account-layout.css"> -->
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
     <title>Are you sure?</title>
 </head>
 
@@ -12,14 +13,14 @@
     <!-- <ul th:replace="page-layout :: employeeNavBar"></ul> -->
     <div class="nav">
         <ul>
-        <li><a href="#/employee">Home</a></li>
-        <li><a href="#/employee/users/showusers">Users</a></li>
-        <li><a href="#/employee/books/showbooks">Catalog</a></li>
-        <li><a href="#/employee/orders">Issue Books</a></li>
-        <li><a href="#/employee/returnedbooks">Return Books</a></li>
-        <li><a href="#/employee/reservations">Process Reservations</a></li>
+        <li><a href="/employee">Home</a></li>
+        <li><a href="/employee/users/showusers">Users</a></li>
+        <li><a href="/employee/books/showbooks">Catalog</a></li>
+        <li><a href="/employee/orders">Issue Books</a></li>
+        <li><a href="/employee/returnedbooks">Return Books</a></li>
+        <li><a href="/employee/reservations">Process Reservations</a></li>
         <li style="float: right">
-            <a class="active" href="#logout">Logout</a>
+            <a class="active" href="logout">Logout</a>
         </li>
         </ul>
     </div>
@@ -33,7 +34,7 @@
                 <label>ISBN:</label>
             </div>
             <div class="col-75">
-                <label th:text="${deleteBook.bookId}"></label>
+                <label th:text="${deleteBook.ISBN}"></label>
             </div>
         </div>
 
@@ -77,16 +78,19 @@
             <div class="col-50">
                 <form action="/employee/books/deletebook" th:method="DELETE">
                     <input type="submit" value="Delete book" style="background-color: red">
-                    <input type="hidden" th:value="${deleteBook.bookId}" name="deleteBookId">
+                    <input type="text" th:value="${deleteBook.ISBN}" name="deleteBookId">
                     <input type="hidden" name="_method" th:value="DELETE">
                     <input type="hidden" name="_csrf" th:value="${_csrf.token}">
                 </form>
             </div>
             <div class="col-75">
-                <input type="submit" value="Cancel without deletion" style="width: 200px">
+            	<form th:action="@{/employee/books/showbooks}" method="GET">
+            		<input type="submit" value="Cancel without deletion" style="width: 200px">
+        		</form>
+                
             </div>
         </div>
-
+	</div>
 </body>
 
 </html>

@@ -107,16 +107,16 @@ public class EmployeeController
 	}
 	
 	@GetMapping(value="/books/areyousuretodeletebook")
-	public String areYouSureToDeleteBook(@RequestParam Long deleteBookISBN, Model model) {
-		Book book = bookService.findById(deleteBookISBN);
+	public String areYouSureToDeleteBook(@RequestParam Long deleteBookId, Model model) {
+		Book book = bookService.findById(deleteBookId);
 		model.addAttribute("deleteBook", book);
 		return "employee/employee-delete-book.html";
 	}
 	
 	@DeleteMapping(value="/books/deletebook")
-	public String deleteBook(@RequestParam Long deleteBookISBN) {
-		bookObjService.deleteByBook(bookService.findById(deleteBookISBN));
-		bookService.deleteById(deleteBookISBN);
+	public String deleteBook(@RequestParam Long deleteBookId) {
+		bookObjService.deleteByBook(bookService.findById(deleteBookId));
+		bookService.deleteById(deleteBookId);
 		return "redirect:/employee/books/bookdeleted";
 	}
 	
