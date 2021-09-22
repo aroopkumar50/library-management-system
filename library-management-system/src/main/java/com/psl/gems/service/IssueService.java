@@ -21,6 +21,18 @@ public class IssueService {
 	@Autowired
 	BookObjRepository bookObjRepository;
 	
+	public List<Issue> findAll() {
+		return (List<Issue>) issueRepository.findAll();
+	}
+	
+	public Issue findById(int id) {
+		return issueRepository.findById(id).get();
+	}
+	
+	public Issue save(Issue issue) {
+		return issueRepository.save(issue);
+	}
+	
 	public List<Issue> getReservations() {
 		return issueRepository.findByStatus(IssueStatus.RESERVATION);
 	}

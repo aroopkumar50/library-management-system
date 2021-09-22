@@ -14,15 +14,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.psl.gems.model.Book;
 import com.psl.gems.model.BookObj;
+import com.psl.gems.model.Issue;
 import com.psl.gems.model.User;
 import com.psl.gems.security.CurrentUserFinder;
 import com.psl.gems.service.BookObjService;
 import com.psl.gems.service.BookService;
+import com.psl.gems.service.IssueService;
 import com.psl.gems.service.UserService;
 
 @Controller
@@ -37,6 +40,9 @@ public class EmployeeController
 	
 	@Autowired
 	BookObjService bookObjService;
+	
+	@Autowired
+	IssueService issueService;
 	
 	@Autowired
 	CurrentUserFinder currentUserFinder;
@@ -119,7 +125,6 @@ public class EmployeeController
 	
 	@DeleteMapping(value="/books/deletebook")
 	public String deleteBook(@RequestParam Long deleteBookISBN) {
-		bookObjService.deleteByBook(bookService.findById(deleteBookISBN));
 		bookService.deleteById(deleteBookISBN);
 		return "redirect:/employee/books/bookdeleted";
 	}
@@ -129,6 +134,33 @@ public class EmployeeController
 		return "employee/employee-book-deleted.html";
 	}
 	
+	@GetMapping(value="/books/changebookinfo")
+	public String changeBookInfo(@RequestParam Long changeBookId, Model model) {
+		Book book = bookService.findById(changeBookId);
+		model.addAttribute("book", book);
+		return "employee/employee-change-book-info.html";
+	}
+	
+	@PutMapping(value="/books/savebookchange")
+	public String updatebookinfo(Book book) {
+		bookService.save(book);
+		return "redirect:/employee/books/bookinfochanged";
+	}
+	
+	@GetMapping(value="/issues")
+	public String checkIssues(Model model) {
+		// TODO: ENABLE filtering for issues by status
+		List<Issue> issues = issueService.findAll();
+		model.addAttribute("issues", issues);
+		// TODO
+		return "employee/view-issues.html";
+	}
+	
+	@PostMapping(value="/issues/update")
+	public String updateIssue(Issue issue) {
+		issueService.save(issue);
+		return "redirect:/employee/issues";
+	}
 	// changeBookInfo(), updateBookInfo(), returnBooks(), reservations()
 
 }
