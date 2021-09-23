@@ -13,7 +13,7 @@ body {
   padding: 20px;
   margin-top: 10px;
   min-width: 10em;
-  min-height: 10em;
+  min-height: 8em;
   transform: scale(0.9);
 }
 
@@ -119,6 +119,7 @@ input[type="submit"] {
   content: "";
   display: table;
   clear: both;
+  padding : 10px;
 }
 
 /* ------------------- TABLE STYLE ------------------*/
@@ -126,6 +127,7 @@ input[type="submit"] {
 #tablestyle {
   border-collapse: collapse;
   width: 98%;
+  margin: 15px;
 }
 
 #tablestyle td,

@@ -3,7 +3,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Browse Books</title>
-<link rel="stylesheet" type="text/css" href="@{/CSS/account-layout.css}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/CSS/account-layout.css}">
 </head>
 <body>
 <div th:replace="navBar-layout :: userNavBar"></div>
@@ -34,13 +36,37 @@
 					<input type="hidden">				
 				</div>
 			</form>
-			
 			<form>
 				<div>
 					<input style="margin-left: 20px" type="submit" value="Show all books" name="showAllBooks">
 					<input type="hidden">
 				</div>
 			</form>
+			
+			<table th:if="${books.size() > 0 }" id="tablestyle">
+        <tr>
+          <th>ISBN</th>
+          <th>Title</th>
+          <th>Author</th>
+        </tr>
+        <tr th:each="book : ${books}">
+          <td th:text="${book.ISBN}"></td>
+          <td th:text="${book.title}"></td>
+          <td th:text="${book.author}"></td>
+          <td style="width: 240px">
+            <form th:action="@{#/employee/books/changebookinfo}" method="GET">
+              <input
+                type="submit"
+                value="Reserve Book"
+                class="table"
+                style="width: 150px; margin-right: 6px"
+              />
+            </form>
+          </td>
+        </tr>
+      </table>
+			
+			
 		</div>
 		<br/>		
 		
