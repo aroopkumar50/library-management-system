@@ -42,15 +42,15 @@ public class LibraryManagementSystemApplication {
 	@Transactional
 	InitializingBean initialCode() {
 		return () -> {
-			User user = new User();
-			user.setName("Admin");
-			user.setUsername("admin");
-			user.setPassword(pwEncoder.encode("test"));
-			user.setRole("librarian");
-			userRepository.save(user);
-			for (User usr : userRepository.findAll()) {
-				System.out.println(usr);
-			}
+//			User user = new User();
+//			user.setName("Admin");
+//			user.setUsername("admin");
+//			user.setPassword(pwEncoder.encode("test"));
+//			user.setRole("librarian");
+//			userRepository.save(user);
+//			for (User usr : userRepository.findAll()) {
+//				System.out.println(usr);
+//			}
 			
 //			Book book = new Book();
 //			book.setISBN(1);

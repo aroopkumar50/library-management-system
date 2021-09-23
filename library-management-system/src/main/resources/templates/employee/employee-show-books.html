@@ -9,19 +9,7 @@
   </head>
 
   <body>
-    <div class="nav">
-      <ul>
-        <li><a href="/employee">Home</a></li>
-        <li><a href="/employee/users/showusers">Users</a></li>
-        <li><a href="/employee/books/showbooks">Catalog</a></li>
-        <li><a href="/employee/orders">Place Order</a></li>
-        <li><a href="/employee/returnedbooks">Return Books</a></li>
-        <li><a href="/employee/reservations">Process Reservations</a></li>
-        <li style="float: right">
-          <a class="active" href="logout">Logout</a>
-        </li>
-      </ul>
-    </div>
+    <div th:replace="navBar-layout :: employeeNavBar"></div>
 
     <div class="container">
       <h3>Catalog</h3>
