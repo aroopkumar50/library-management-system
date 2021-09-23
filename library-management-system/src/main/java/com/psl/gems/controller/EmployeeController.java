@@ -119,13 +119,14 @@ public class EmployeeController
 	}
 	
 	@GetMapping(value="/books/areyousuretodeletebook")
-	public String areYouSureToDeleteBook(@RequestParam Long deleteBookISBN, Model model) {
-		Book book = bookService.findById(deleteBookISBN);
+	public String areYouSureToDeleteBook(@RequestParam Long deleteBookId, Model model) {
+		Book book = bookService.findById(deleteBookId);
 		model.addAttribute("deleteBook", book);
 		return "employee/employee-delete-book.html";
 	}
 	
 	@DeleteMapping(value="/books/deletebook")
+
 	public String deleteBook(@RequestParam Long deleteBookISBN) {
 		bookService.deleteById(deleteBookISBN);
 		return "redirect:/employee/books/bookdeleted";

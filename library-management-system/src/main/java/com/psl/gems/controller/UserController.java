@@ -1,5 +1,6 @@
 package com.psl.gems.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,4 +23,7 @@ public class UserController
 		model.addAttribute("currentUser",currentUser);
 		return "user/user-home.html";
 	}
+	
+// browsebooks(), yourBooks(), reserveBook()
+	
 }
