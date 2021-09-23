@@ -49,7 +49,7 @@ public class IssueService {
 		BookObj bookObj = bookObjRepository.findFirstAvailableCopyByBookId(book.getISBN());
 		Issue issue = new Issue();
 		issue.setBookObj(bookObj);
-		issue.setUsers(user);
+		issue.setUser(user);
 		issue.setStatus(IssueStatus.ISSUED);
 		issueRepository.save(issue);
 	}
