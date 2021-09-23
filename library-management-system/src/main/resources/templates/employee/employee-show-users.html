@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <!--<link rel="stylesheet" href="../../static/css/account-layout.css">  -->
-    
-    <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+     <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}"> 
+   	 <!--<link rel="stylesheet" href="../../static/css/account-layout.css">-->
     <title>Users</title>
 </head>
 
@@ -47,10 +46,10 @@
                         <input type="text" id="lastName" name="lastName">
                     </div> -->
                     <div class="col-25">
-                        <label for="userId">User ID</label>
+                        <label for="user_id">User ID</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="userId" name="userId">
+                        <input type="text" id="user_id" name="user_id">
                     </div>
 
                     <div class="col-25">
@@ -69,38 +68,27 @@
                 </form>
             </div>
             <br />
-              table th:if="${usersWithFines.size > 0}" id="tablestyle">
+            
+            <table id="tablestyle">
                 <tr>
-                    <!-- <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Fine</th>
-                    <th>User ID</th>
+                	<th>User ID</th>
                     <th>Name</th>
-                    <!-- <th>Email</th> -->
                     <th style="width: 150px">Action</th>
                 </tr>
-
-                <tr th:each="user : ${usersWithFines}">
-                    <!-- <td th:text="${user.key.firstName}"></td>
-                    <td th:text="${user.key.lastName}"></td>
-                    <td th:text="${user.key.email}"></td>
-                    <td th:text="${user.key.phoneNumber}"></td>
-                    <td th:if="${user.value > 0}" style="color:red" th:text="${'$ ' + user.value}"></td>
-                    <td th:if="${user.value == 0}" th:text="${'$ ' + user.value}"></td> --> 
-                    <td th:text="${user.key.userId}"></td>
-                    <td th:text="${user.key.name}"></td>
+				
+                <tr th:each="user : ${users}">
+                     
+                    <td th:text="${user.user_id}"></td>
+                    <td th:text="${user.name}"></td>
                     <td>
-                        <form th:action="#@{/employee/users/showuserinfo}" method="GET">
+                        <form th:action="@{/employee/users/showuserinfo}" method="GET">
                             <input class="table" type="submit" value="Show user info">
-                            <input type="hidden" th:value="${user.key.userId}" name="userId">
-                            <input type="hidden" th:value="${user.value}" name="fine">
+                            <input type="hidden" th:value="${user.user_id}" name="user_id">
                         </form>
                     </td>
                 </tr>
 
-            </table-->
+            </table> 
 
         </div>
     </body>

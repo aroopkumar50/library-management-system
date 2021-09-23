@@ -58,14 +58,16 @@ public class EmployeeController
 	
 	@GetMapping(value="/users/showusers")
 	public String showUsers(Model model,
-			@RequestParam (required=false)String name, 
+			@RequestParam (required=false)String name,
+			@RequestParam (required=false)String user_id,
 			@RequestParam (required=false)String showAllUsers) {
-		
 		List<User> users = new ArrayList<User>();
-		
 		if (showAllUsers != null) users = usService.findAll();
-		else if (name != null) users = usService.getByName(name);
-						
+		else if (name != null && !name.equals("")) users = usService.getByName(name);
+		else if (user_id != null) {
+			users.add(usService.findById(Integer.parseInt(user_id)));
+		}	
+		model.addAttribute("users", users);				
 		return "employee/employee-show-users.html";	
 	}
 	
