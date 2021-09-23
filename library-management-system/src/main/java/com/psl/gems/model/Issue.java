@@ -23,7 +23,7 @@ public class Issue {
 	private BookObj bookObj;
 	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
 			fetch = FetchType.EAGER)
-	private User users;
+	private User user;
 	
 	@Enumerated(EnumType.ORDINAL)
 	private IssueStatus status;
@@ -44,11 +44,11 @@ public class Issue {
 	public void setBookObj(BookObj bookObj) {
 		this.bookObj = bookObj;
 	}
-	public User getUsers() {
-		return users;
+	public User getUser() {
+		return user;
 	}
-	public void setUsers(User users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public LocalDate getIssueDate() {
 		return issueDate;
@@ -70,7 +70,7 @@ public class Issue {
 	}
 	@Override
 	public String toString() {
-		return "Issue [id=" + id + ", bookObj=" + bookObj + ", users=" + users + ", status=" + status + ", issueDate="
+		return "Issue [id=" + id + ", bookObj=" + bookObj + ", user=" + user + ", status=" + status + ", issueDate="
 				+ issueDate + ", returnDate=" + returnDate + "]";
 	}
 }

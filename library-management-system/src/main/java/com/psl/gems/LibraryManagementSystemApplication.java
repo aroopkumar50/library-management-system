@@ -1,5 +1,8 @@
 package com.psl.gems;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.InitializingBean;
@@ -51,10 +54,11 @@ public class LibraryManagementSystemApplication {
 			
 //			Book book = new Book();
 //			book.setISBN(1);
-//			book = bookRepository.save(book);
 //			BookObj bookObj = new BookObj();
-//			bookObj.setBook(book);
-//			bookObj = bookObjRepository.save(bookObj);
+//			Set<BookObj> bookObjSet = new HashSet<BookObj>();
+//			book.setBookObjs(bookObjSet);
+//			book = bookRepository.save(book);
+////			bookRepository.delete(book);
 //			
 //			System.out.println(bookObjRepository.findFirstAvailableCopyByBookId(book.getISBN()));
 		};

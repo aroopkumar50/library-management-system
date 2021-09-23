@@ -16,7 +16,7 @@ public class Book {
 	private String title;
 	private String author;
 	
-	@OneToMany(mappedBy = "book", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "book", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<BookObj> bookObjs;
 	
 	
@@ -37,6 +37,13 @@ public class Book {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	
+	public Set<BookObj> getBookObjs() {
+		return bookObjs;
+	}
+	public void setBookObjs(Set<BookObj> bookObjs) {
+		this.bookObjs = bookObjs;
 	}
 	@Override
 	public String toString() {
