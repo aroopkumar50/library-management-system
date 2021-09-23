@@ -125,10 +125,10 @@ public class EmployeeController
 		return "employee/employee-delete-book.html";
 	}
 	
-	@DeleteMapping(value="/books/deletebook")
+	@PostMapping(value="/books/deletebook")
 
-	public String deleteBook(@RequestParam Long deleteBookISBN) {
-		bookService.deleteById(deleteBookISBN);
+	public String deleteBook(@RequestParam Long deleteBookId) {
+		bookService.deleteById(deleteBookId);
 		return "redirect:/employee/books/bookdeleted";
 	}
 	

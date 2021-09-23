@@ -1,9 +1,14 @@
 package com.psl.gems.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -16,6 +21,9 @@ public class User {
 	private String username;
 	private String password;
 	private boolean enabled=true;
+	
+	@OneToMany(mappedBy = "user", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY, orphanRemoval = true)
+	private Set<Issue> issues;
 	
 	public int getUser_id() {
 		return user_id;
@@ -46,6 +54,18 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	public Set<Issue> getIssues() {
+		return issues;
+	}
+	public void setIssues(Set<Issue> issues) {
+		this.issues = issues;
 	}
 	@Override
 	public String toString() {
