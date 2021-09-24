@@ -23,9 +23,10 @@ public class BookService
 	@Autowired
 	UserRepository usRepo;
 	
-	public void save(Book book)
+	public Book save(Book book)
 	{
 		bookRepo.save(book);
+		return book;
 	}
 	
 	/*public void saveById(long ISBN)
