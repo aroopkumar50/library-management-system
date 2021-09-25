@@ -72,22 +72,24 @@
             </div>
         </div>
         
-        <div th:if="${issue.status.displayValue == 'Reserved'}">
-            <form th:method="POST" th:action="@{/employee/issues/{id}/update-status(id=${issue.id})}">
-                <input type="hidden" name="status" value="CANCELED">
-                <input type="submit" value="Cancel">
-            </form>
-            <form th:method="POST" th:action="@{/employee/issues/{id}/update-status(id=${issue.id})}">
-                <input type="hidden" name="status" value="ISSUED">
-                <input type="submit" value="Issue">
-            </form>
-        </div>
-        
-        <div th:if="${issue.status.displayValue == 'Issued'}">
-            <form th:method="POST" th:action="@{/employee/issues/{id}/update-status(id=${issue.id})}">
-                <input type="hidden" name="status" value="RETURNED">
-                <input type="submit" value="Reclaim">
-            </form>
+        <div class="row">
+		        <div th:if="${issue.status.displayValue == 'Reserved'}">
+		            <form th:method="POST" th:action="@{/employee/issues/{id}/update-status(id=${issue.id})}">
+		                <input type="hidden" name="status" value="CANCELED">
+		                <input type="submit" value="Cancel">
+		            </form>
+		            <form th:method="POST" th:action="@{/employee/issues/{id}/update-status(id=${issue.id})}">
+		                <input type="hidden" name="status" value="ISSUED">
+		                <input style="margin-left: 15px;" type="submit" value="Issue">
+		            </form>
+		        </div>
+
+		        <div th:if="${issue.status.displayValue == 'Issued'}">
+		            <form th:method="POST" th:action="@{/employee/issues/{id}/update-status(id=${issue.id})}">
+		                <input type="hidden" name="status" value="RETURNED">
+		                <input type="submit" value="Reclaim">
+		            </form>
+		        </div>
         </div>
         
 	</div>

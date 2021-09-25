@@ -142,3 +142,12 @@ input[type="submit"], .submit-button {
 	background-color: #4d484e;
 	color: white;
 }
+
+/*--------------Misc-----------------------------*/
+.newBlock {
+	margin-top: 10px;
+}
+
+.newForm {
+	margin-top: 10px;
+}
