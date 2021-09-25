@@ -33,16 +33,8 @@ public class IssueService {
 		return issueRepository.save(issue);
 	}
 	
-	public List<Issue> getReservations() {
-		return issueRepository.findByStatus(IssueStatus.RESERVATION);
-	}
-	
-	public List<Issue> getIssues() {
-		return issueRepository.findByStatus(IssueStatus.ISSUED);
-	}
-	
-	public List<Issue> getOldIssues() {
-		return issueRepository.findByStatus(IssueStatus.RETURNED);
+	public List<Issue> findByStatus(IssueStatus status) {
+		return issueRepository.findByStatus(status);
 	}
 	
 	public void issueBook(Book book, User user) {

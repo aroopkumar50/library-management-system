@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Your Reservations</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	<div th:replace="navBar-layout :: userNavBar"></div>
+	<div class="container">
+		<h3>Book:</h3>
+		<div class="row">
+            <div class="col-50">
+                <label>ISBN:</label>
+            </div>
+            <div class="col-75">
+                <label th:text="${book.ISBN}"></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label>Title:</label>
+            </div>
+            <div class="col-75">
+                <label th:text="${book.title}"></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label>Author: </label>
+            </div>
+            <div class="col-75">
+                <label th:text="${book.author}"></label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-50">
+                <label>Availability: </label>
+            </div>
+            <div class="col-75" th:switch="${isAvailable}">
+                <label th:case="true">This book is Available</label>
+                <label th:case="false">Sorry, this book is not Available</label>
+            </div>
+        </div>
+        
+        <div th:if="${isAvailable}">
+            Reserve Book:
+            <form th:method="POST" th:action="@{/user/books/reserve/{id}(id=${book.ISBN})}">
+                Start Date: <input type="date" name="issueDate">
+                End Date: <input type="date" name="returnDate">
+                <input type="submit" value="Reserve Book">
+            </form>
+        </div>
+        
+	</div>
+	
+</body>
+</html>

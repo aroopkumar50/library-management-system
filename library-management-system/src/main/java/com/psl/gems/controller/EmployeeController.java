@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.psl.gems.model.Book;
 import com.psl.gems.model.BookObj;
 import com.psl.gems.model.Issue;
+import com.psl.gems.model.IssueStatus;
 import com.psl.gems.model.User;
 import com.psl.gems.security.CurrentUserFinder;
 import com.psl.gems.service.BookObjService;
@@ -150,19 +152,34 @@ public class EmployeeController
 		return "redirect:/employee/books/bookinfochanged";
 	}
 	
-	@GetMapping(value="/issues")
-	public String checkIssues(Model model) {
-		// TODO: ENABLE filtering for issues by status
-		List<Issue> issues = issueService.findAll();
+	@GetMapping(value="/reservations")
+	public String checkIssues(Model model, @RequestParam (defaultValue="0") int issueId, @RequestParam (required=false) IssueStatus status) {
+		List <Issue> issues;
+		if (issueId != 0) {
+			issues = new ArrayList<Issue>();
+			issues.add(issueService.findById(issueId));
+		} else if (status != null) {
+			issues = issueService.findByStatus(status);
+		} else {
+			issues = issueService.findAll();
+		}
 		model.addAttribute("issues", issues);
-		// TODO
-		return "employee/view-issues.html";
+		return "employee/employee-reservations.html";
 	}
 	
-	@PostMapping(value="/issues/update")
-	public String updateIssue(Issue issue) {
+	@GetMapping(value="issues/{issueId}")
+	public String viewIssue(Model model, @PathVariable int issueId) {
+		Issue issue = issueService.findById(issueId);
+		model.addAttribute("issue", issue);
+		return "employee/view-issue.html";
+	}
+	
+	@PostMapping(value="/issues/{issueId}/update-status")
+	public String updateIssue(@PathVariable int issueId, @RequestParam (required=false) IssueStatus status) {
+		Issue issue = issueService.findById(issueId);
+		issue.setStatus(status);
 		issueService.save(issue);
-		return "redirect:/employee/issues";
+		return "redirect:/employee/reservations";
 	}
 	// changeBookInfo(), updateBookInfo(), returnBooks(), reservations()
 
