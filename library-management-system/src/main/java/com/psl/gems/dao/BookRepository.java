@@ -16,4 +16,5 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 	
 	@Query(value="SELECT EXISTS(select * from book_obj b LEFT OUTER JOIN issue i ON b.id = i.book_obj_id WHERE b.book_isbn = ?1 AND (i.status IS NULL OR (i.status != 2 AND i.status != 0)))", nativeQuery=true)
 	int checkAvailabilityById(long id);
+	
 }
