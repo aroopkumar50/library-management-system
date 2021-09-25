@@ -2,8 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="ISO-8859-1" />
-    <!--  <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">  -->
-    <link rel="stylesheet" href="../../static/css/account-layout.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}"> 
     <title>Book Information Changed</title>
   </head>
 
@@ -13,7 +12,7 @@
 
     <div class="container">
       <h3>Book information changed!</h3>
-      <form th:action="#@{/employee/books/showbooks}" th:method="GET">
+      <form th:action="@{/employee/books/showbooks}" th:method="GET">
         <div class="row">
           <input type="submit" value="Go back to catalog" />
         </div>

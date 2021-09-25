@@ -74,16 +74,16 @@ public class EmployeeController
 	}
 	
 	@GetMapping(value="/users/showuserinfo")
-	public String showUserInfo(@RequestParam int userId, 
+	public String showUserInfo(@RequestParam int user_id, 
 								Model model) {
-		User user = usService.findById(userId);
+		User user = usService.findById(user_id);
 		model.addAttribute("user", user);
 		return "employee/employee-show-user-info.html";
 	}
 	
 	@GetMapping(value="/books")
 	public String books() {
-		return "employee/employee-books.html";
+		return "redirect:/employee/books/showbooks";
 	}
 	
 	@GetMapping(value="/books/showbooks")
@@ -149,7 +149,7 @@ public class EmployeeController
 	@PutMapping(value="/books/savebookchange")
 	public String updatebookinfo(Book book) {
 		bookService.save(book);
-		return "redirect:/employee/books/bookinfochanged";
+		return "employee/employee-book-information-changed.html";
 	}
 	
 	@GetMapping(value="/reservations")

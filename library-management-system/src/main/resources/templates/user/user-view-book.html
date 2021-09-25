@@ -46,13 +46,31 @@
             </div>
         </div>
         
-        <div th:if="${isAvailable}">
-            Reserve Book:
-            <form th:method="POST" th:action="@{/user/books/reserve/{id}(id=${book.ISBN})}">
-                Start Date: <input type="date" name="issueDate">
-                End Date: <input type="date" name="returnDate">
-                <input type="submit" value="Reserve Book">
-            </form>
+        <div class="newBlock" th:if="${isAvailable}">
+            <em>Reserve Book:</em>
+            <div class="newForm">
+	            <div class="row">
+		            <form th:method="POST" th:action="@{/user/books/reserve/{id}(id=${book.ISBN})}">
+		            	<div class="col-25">
+		                	<label style="padding-right: 8px;">Start Date:</label> 
+		                </div>
+		                
+		                <div class="col-75">	
+		                	<input type="date" name="issueDate">
+						</div>
+						
+						<div class="col-25">
+		                	<label style="padding-left: 20px; padding-right: 8px;">End Date:</label> 
+		                </div>
+		                
+		                <div class="col-75">
+		                	<input type="date" name="returnDate">
+		                </div>
+		                
+		                <input style="margin-left: 20px" type="submit" value="Reserve Book">
+		            </form>
+	            </div>
+            </div>
         </div>
         
 	</div>
