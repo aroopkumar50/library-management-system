@@ -16,8 +16,9 @@ public class UserService
 	@Autowired
 	UserRepository usRepo;
 	
-	public void save(User user) {
+	public User save(User user) {
 		usRepo.save(user);
+		return user;
 	}
 	
 	public void saveById(int userId) {
