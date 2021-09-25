@@ -61,7 +61,9 @@
             <td th:text="${issue.returnDate}"></td>
             <td th:text="${issue.status.displayValue}"></td>
             <td>
-              <a th:href="@{/employee/issues/{id}(id=${issue.id})}">View</a>
+              <form th:action="@{/employee/issues/{id}(id=${issue.id})}" method="GET">
+              	<input type="submit" value="View Issue Info" class="table"
+							style="margin-left: 4em;" />
             </td>
           </tr>
         </table>
