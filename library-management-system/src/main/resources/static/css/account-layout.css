@@ -75,7 +75,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 	resize: vertical;
 }
 
-input[type="submit"] {
+input[type="submit"], .submit-button {
 	background-color: #47a153;
 	color: white;
 	padding: 13px;

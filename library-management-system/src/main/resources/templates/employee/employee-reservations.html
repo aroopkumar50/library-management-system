@@ -2,9 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="ISO-8859-1" />
-    <!-- <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}"> -->
-    <link rel="stylesheet" href="../../static/css/account-layout.css" />
-    <title>Reservations</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+    <title>Issues</title>
   </head>
 
   <body>
@@ -12,86 +11,62 @@
     
 
     <div class="container">
-      <h3>Unprocessed reservations</h3>
-
-      <div th:if="${unprocessedReservations.size() == 0}">
-        <p>No unprocessed reservations.</p>
+      <h3>Issues</h3>
+      <div class="row">
+	      <form method="GET">
+	          <div class="col-25">
+		          <label for="status">Issue Id:</label>
+		      </div>
+		      <div class="col-75">
+		          <input type="number" name="issueId">
+		      </div>
+		      <div class="col-25">
+		          <label for="status">Status:</label>
+		      </div>
+		      <div class="col-75">
+			      <select name="status">
+			          <option value="">---------</option>
+			          <option th:each="status: ${T(com.psl.gems.model.IssueStatus).values()}" th:value="${status}" th:text="${status.displayValue}">
+			          </option>
+			      </select>
+		      </div>
+		      <div>
+		          <input type="submit" value="Search" />
+		      </div>
+	      </form>
       </div>
 
-      <div th:if="${unprocessedReservations.size() > 0}">
+      <div th:if="${issues.size() == 0}">
+        <p>No issues.</p>
+      </div>
+
+      <div th:if="${issues.size() > 0}">
         <table id="tablestyle">
           <tr>
             <th>ISBN</th>
             <th>Title</th>
             <th>Author</th>
-            <!-- <th>Release Year</th>
-            <th>Edition</th> -->
             <th>Reserved by</th>
+            <th>Reserved From</th>
             <th>Reserved Until</th>
-            <th style="width: 260px">Ready for Pick Up</th>
+            <th>Status</th>
+            <th style="width: 260px">View</th>
           </tr>
-          <tr th:each="book : ${unprocessedReservations}">
-            <td th:text="${book.bookId}"></td>
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <!-- <td th:text="${book.releaseYear}"></td>
-            <td th:text="${book.edition}"></td> -->
-            <!-- <td
-              th:text="${book.reservedByUser.firstName + ' ' + book.reservedByUser.lastName}"
-            ></td> -->
-            <td th:text="${book.reservedByUser.Name}"></td>
-            <td th:text="${book.endReservationDate}"></td>
+          <tr th:each="issue : ${issues}">
+            <td th:text="${issue.bookObj.book.ISBN}"></td>
+            <td th:text="${issue.bookObj.book.title}"></td>
+            <td th:text="${issue.bookObj.book.author}"></td>
+            <td th:text="${issue.user.name}"></td>
+            <td th:text="${issue.issueDate}"></td>
+            <td th:text="${issue.returnDate}"></td>
+            <td th:text="${issue.status.displayValue}"></td>
             <td>
-              <form th:action="#@{/employee/setreadyforpickup}" th:method="PUT">
-                <input
-                  style="width: 250px"
-                  class="table"
-                  type="submit"
-                  value="Set book status to ready for pick-up"
-                />
-                <input type="hidden" th:name="_method" th:value="PUT" />
-                <input type="hidden" name="bookId" th:value="${book.bookId}" />
-                <input
-                  type="hidden"
-                  name="userId"
-                  th:value="${book.reservedByUser.userId}"
-                />
-              </form>
+              <a th:href="@{/employee/issues/{id}(id=${issue.id})}">View</a>
             </td>
           </tr>
         </table>
       </div>
 
-      <h3>Processed reservations</h3>
-      <div th:if="${processedReservations.size() == 0}">
-        <p>No processed book reservations.</p>
-      </div>
-
-      <div th:if="${processedReservations.size() > 0}">
-        <table id="tablestyle">
-          <tr>
-            <th>ISBN</th>
-            <th>Title</th>
-            <th>Author</th>
-            <!-- <th>Release Year</th>
-            <th>Edition</th> -->
-            <th>Reserved by</th>
-            <th>Reserved Until</th>
-          </tr>
-          <tr th:each="book : ${processedReservations}">
-            <td th:text="${book.bookId}"></td>
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <!-- <td th:text="${book.releaseYear}"></td>
-            <td th:text="${book.edition}"></td>
-            <td
-              th:text="${book.reservedByUser.firstName + ' ' + book.reservedByUser.lastName}"
-            ></td> -->
-            <td th:text="${book.reservedByUser.Name}"></td>
-            <td th:text="${book.endReservationDate}"></td>
-          </tr>
-        </table>
-      </div>
     </div>
   </body>
 </html>

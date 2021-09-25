@@ -39,8 +39,7 @@
 
 			<form>
 				<div>
-					<input style="margin-left: 20px" type="submit"
-						value="Show all books" name="showAllBooks">
+				    <a href="?" style="margin-left: 20px"><button type="button" class="submit-button">Show all books</button></a>
 				</div>
 			</form>
 		</div>
@@ -57,10 +56,11 @@
 				<td th:text="${book.title}"></td>
 				<td th:text="${book.author}"></td>
 				<td style="width: 240px;">
-					<form th:action="@{#/employee/books/changebookinfo}" method="GET">
+				    <a th:href="@{/user/books/{id}(id=${book.ISBN})}"><button class="submit-button">View Book</button></a>
+					<!--<form th:action="@{#/employee/books/changebookinfo}" method="GET">
 						<input type="submit" value="Reserve Book" class="table"
 							style="width: 150px; margin-left: 3.5em" />
-					</form>
+					</form>-->
 				</td>
 			</tr>
 		</table>
