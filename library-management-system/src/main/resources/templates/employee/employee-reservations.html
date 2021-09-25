@@ -50,7 +50,7 @@
             <th>Reserved From</th>
             <th>Reserved Until</th>
             <th>Status</th>
-            <th style="width: 260px">View</th>
+            <th style="width: 150px">View</th>
           </tr>
           <tr th:each="issue : ${issues}">
             <td th:text="${issue.bookObj.book.ISBN}"></td>
@@ -63,7 +63,8 @@
             <td>
               <form th:action="@{/employee/issues/{id}(id=${issue.id})}" method="GET">
               	<input type="submit" value="View Issue Info" class="table"
-							style="margin-left: 4em;" />
+							style="transform: scale(0.9);" />
+			  </form>
             </td>
           </tr>
         </table>
