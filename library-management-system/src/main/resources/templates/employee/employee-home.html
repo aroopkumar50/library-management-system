@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1" />
-<link rel="stylesheet" type="text/css"
-	th:href="@{CSS/account-layout.css}"/>
-<!-- link rel="stylesheet" href="../../static/css/account-layout.css" /> -->
-<title>Employee-Home</title>
+	<meta charset="ISO-8859-1" />
+	<link rel="stylesheet" type="text/css" th:href="@{CSS/account-layout.css}"/>
+	<title>Employee-Home</title>
 </head>
 
 <body>
 	<div class="wrapper">
 		<div th:replace="navBar-layout :: employeeNavBar"></div>
-
+		
+		<div class="notify">
+			<h2 th:text="${'Welcome,' + ' ' + currentUser.name}"></h2>
+		</div>
+		
+		<div class="container">
+			<h3>Notifications</h3>
+			<p>There are no notifications.</p>
+		</div>
 	</div>
 </body>
 </html>

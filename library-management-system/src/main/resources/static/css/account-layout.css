@@ -1,5 +1,11 @@
 @charset "ISO-8859-1";
 
+/* .bgimg {
+	background-image: url("");
+ 	min-height: 100%;
+ 	background-position: center;
+	background-size: cover;
+} */
 /*----------------------- CONTENT LAYOUT ------------------------ */
 body {
 	background-color: #bee4fa;
