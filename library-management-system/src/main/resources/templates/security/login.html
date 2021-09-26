@@ -14,12 +14,12 @@
 				<p><b>Account details</b></p>	
                 
                 <div th:if="${param.error}" class="alert alert-error">    
-                    <small class="incorrect">Invalid username and password.</small>
+                    <small class="incorrect">Invalid username or password.</small>
                 </div>
             
-                <!-- <div th:if="${param.logout}" class="alert alert-success"> 
+                <div th:if="${param.logout}" class="alert alert-success"> 
                    <small class="logout"> You have been logged out.</small> 
-                </div> -->
+                </div>
 
                 <div class="row">
                     <div class="col-25">
