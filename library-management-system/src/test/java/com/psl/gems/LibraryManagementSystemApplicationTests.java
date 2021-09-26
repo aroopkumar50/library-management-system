@@ -142,7 +142,7 @@ class LibraryManagementSystemApplicationTests {
 		user1.setPassword(pwEncoder.encode("test"));
 		user1.setRole("member");
 		user1.setEnabled(true);
-		when(userRepo.findByName(name)).thenReturn(Stream.of(user1).collect(Collectors.toList()));
+		when(userRepo.findByNameContainingIgnoreCase(name)).thenReturn(Stream.of(user1).collect(Collectors.toList()));
 		
 		assertEquals(1,userService.getByName("xyz").size());
 		

@@ -9,7 +9,33 @@
 	<div th:replace="navBar-layout :: userNavBar"></div>
 	<div class="container">
 		<h3>Your Reservations</h3>
-		<p>You don't have any book reservations.</p>
+		
+		<div th:if="${issues.size() == 0}">
+            <p>You haven't issued any books.</p>
+        </div>
+        
+        <div th:if="${issues.size() > 0}">
+            <table id="tablestyle">
+                <tr>
+                    <th>Issue Id</th>
+                    <th>ISBN</th>
+		            <th>Title</th>
+		            <th>Author</th>
+		            <th>Reserved From</th>
+		            <th>Reserved Until</th>
+		            <th>Status</th>
+                </tr>
+                <tr th:each="issue : ${issues}">
+                    <td th:text="${issue.id}"></td>
+		            <td th:text="${issue.bookObj.book.ISBN}"></td>
+		            <td th:text="${issue.bookObj.book.title}"></td>
+		            <td th:text="${issue.bookObj.book.author}"></td>
+		            <td th:text="${issue.issueDate}"></td>
+		            <td th:text="${issue.returnDate}"></td>
+		            <td th:text="${issue.status.displayValue}"></td>
+                </tr>
+            </table>
+        <div>
 	</div>
 	
 </body>
