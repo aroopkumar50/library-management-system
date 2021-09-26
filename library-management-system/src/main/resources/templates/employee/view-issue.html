@@ -84,7 +84,7 @@
 		        <div th:if="${issue.status.displayValue == 'Reserved'}">
 		            <form th:method="POST" th:action="@{/employee/issues/{id}/update-status(id=${issue.id})}">
 		                <input type="hidden" name="status" value="CANCELED">
-		                <input type="submit" value="Cancel">
+		                <input type="submit" value="Cancel" style="background-color:#f44336">
 		            </form>
 		            <form th:method="POST" th:action="@{/employee/issues/{id}/update-status(id=${issue.id})}">
 		                <input type="hidden" name="status" value="ISSUED">
@@ -94,7 +94,7 @@
 
 		        <div th:if="${issue.status.displayValue == 'Issued'}">
 		            <form th:method="POST" th:action="@{/employee/issues/{id}/update-status(id=${issue.id})}">
-		                <input type="hidden" name="status" value="RETURNED">
+		                <input type="hidden" name="status" value="RETURNED" >
 		                <input type="submit" value="Reclaim">
 		            </form>
 		        </div>
