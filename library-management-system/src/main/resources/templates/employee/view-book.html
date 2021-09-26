@@ -5,7 +5,7 @@
     <!-- <link rel="stylesheet" href="../../static/css/account-layout.css" /> -->
     
     <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
-    <title>New Book</title>
+    <title>View Book</title>
   </head>
 
   <body>
@@ -13,27 +13,15 @@
     
 
     <div class="container">
-      <h3>Add new book to catalog</h3>
+      <h3>Update Book information:</h3>
 
-      <form
-        th:action="@{/employee/books/save}"
-        th:object="${book}"
-        method="POST"
-      >
+      <form th:action="@{/employee/books/{id}(id=${book.ISBN})}" th:method="POST">
         <div class="row">
           <div class="col-50">
             <label for="title">ISBN</label>
           </div>
 
-          <div class="col-75">
-            <input
-              type="text"
-              id="title"
-              name="title"
-              th:field="${book.ISBN}"
-              required="required"
-            />
-          </div>
+          <div class="col-75" th:text="${book.ISBN}"></div>
         </div>
 
         <div class="row">
@@ -74,6 +62,15 @@
           </div>
         </div>
       </form>
+      
+      <div>
+	      <p>
+	          Number of Copies: <span th:text="${book.bookObjs.size()}"></span>
+	      </p>
+	      <form th:action="@{/employee/books/{isbn}/add-copy(isbn=${book.ISBN})}" th:method="POST">
+	          <input type="submit" value="Add a new Copy" />
+	      </form>
+      </div>
     </div>
   </body>
 </html>

@@ -37,7 +37,7 @@ public class UserService
 	
 	public List<User> getByName(String name){
 		List<User> users = new ArrayList<User>();
-		users = usRepo.findByName(name);
+		users = usRepo.findByNameContainingIgnoreCase(name);
 		return users;
 	}
 	

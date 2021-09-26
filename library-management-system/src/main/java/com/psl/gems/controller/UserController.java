@@ -90,6 +90,14 @@ public class UserController {
 		// TODO: Redirect and say reservation made successfully.
 		return "redirect:/user/browsebooks";
 	}
+	
+	@GetMapping(value="/yourreservations")
+	public String viewReservations(Model model) {
+		User currentUser = currentUserFinder.getCurrentUser();
+		List<Issue> issues = issueService.findByUser(currentUser);
+		model.addAttribute("issues", issues);
+		return "user/user-book-reservation.html";
+	}
 
 // browsebooks(), yourBooks(), reserveBook()
 

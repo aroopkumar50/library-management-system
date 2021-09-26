@@ -12,16 +12,7 @@
 <body>
 	<div class="wrapper">
 		<div th:replace="navBar-layout :: userNavBar"></div>
-		<!-- <div class="nav">
-			<ul>
-				<li><a href="/user">Home</a></li>
-				<li><a href="#/user/yourbooks">Your Books</a></li>
-				<li><a href="#/user/browsebooks">Browse Books</a></li>
-				<li><a href="#/user/yourreservations">Your Reservations</a></li>
-				<li style="float: right"><a class="active" href="/logout">Logout</a></li>
-			</ul>
-		</div> -->
-
+		
 		<div class="notify">
 			<h2 th:text="${'Welcome,' + ' ' + currentUser.name}"></h2>
 		</div>
