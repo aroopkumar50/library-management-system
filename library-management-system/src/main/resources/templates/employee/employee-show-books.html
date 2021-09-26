@@ -33,17 +33,10 @@
             <input type="submit" value="Search" />
           </div>
         </form>
-
-        <form th:action="@{/employee/books/showbooks}" method="GET">
-          <div>
-            <input
-              style="margin-left: 20px"
-              type="submit"
-              value="Show all books"
-              name="showAllBooks"
-            />
-          </div>
-        </form>
+        
+        <div>
+        	<a href="?"><button type="button" class="submit-button">Show all books</button></a>
+        </div>
 
         <form th:action="@{/employee/books/newbook}" method="GET">
           <div>
@@ -78,19 +71,7 @@
           <td th:text="${book.startReservationDate}"></td>
           <td th:text="${book.endReservationDate}"></td> -->
           <td style="width: 240px">
-            <form th:action="@{/employee/books/changebookinfo}" method="GET">
-              <input
-                type="submit"
-                value="Change info"
-                class="table"
-                style="width: 110px; margin-right: 6px"
-              />
-              <input
-                type="hidden"
-                th:value="${book.ISBN}"
-                name="changeBookId"
-              />
-            </form>
+            <a th:href="@{/employee/books/{id}(id=${book.ISBN})}"><button type="button" class="submit-button">Change info</button></a>
             <form
               th:action="@{/employee/books/areyousuretodeletebook}"
               method="GET"

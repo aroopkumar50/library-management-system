@@ -9,7 +9,7 @@ import com.psl.gems.model.User;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-	List<User> findByName(String name);
+	List<User> findByNameContainingIgnoreCase(String name);
 
 	Optional<User> findByUsername(String username);
 	

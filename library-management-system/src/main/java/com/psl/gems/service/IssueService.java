@@ -37,6 +37,10 @@ public class IssueService {
 		return issueRepository.findByStatus(status);
 	}
 	
+	public List<Issue> findByUser(User user) {
+		return issueRepository.findByUser(user);
+	}
+	
 	public void issueBook(Book book, User user) {
 		BookObj bookObj = bookObjRepository.findFirstAvailableCopyByBookId(book.getISBN());
 		Issue issue = new Issue();

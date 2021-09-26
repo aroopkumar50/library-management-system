@@ -43,6 +43,7 @@
       <div th:if="${issues.size() > 0}">
         <table id="tablestyle">
           <tr>
+            <th>Issue Id</th>
             <th>ISBN</th>
             <th>Title</th>
             <th>Author</th>
@@ -53,6 +54,7 @@
             <th style="width: 150px">View</th>
           </tr>
           <tr th:each="issue : ${issues}">
+            <td th:text="${issue.id}"></td>
             <td th:text="${issue.bookObj.book.ISBN}"></td>
             <td th:text="${issue.bookObj.book.title}"></td>
             <td th:text="${issue.bookObj.book.author}"></td>

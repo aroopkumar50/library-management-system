@@ -60,15 +60,17 @@ public class EmployeeController
 	
 	@GetMapping(value="/users/showusers")
 	public String showUsers(Model model,
-			@RequestParam (required=false)String name,
-			@RequestParam (required=false)String user_id,
-			@RequestParam (required=false)String showAllUsers) {
-		List<User> users = new ArrayList<User>();
-		if (showAllUsers != null) users = usService.findAll();
-		else if (name != null && !name.equals("")) users = usService.getByName(name);
-		else if (user_id != null) {
-			users.add(usService.findById(Integer.parseInt(user_id)));
-		}	
+			@RequestParam(required=false) String name,
+			@RequestParam(defaultValue = "0") int user_id) {
+		List<User> users;
+		if (user_id != 0) {
+			users = new ArrayList<User>();
+			users.add(usService.findById(user_id));
+		} else if (name != null && !name.isEmpty()) {
+			users = usService.getByName(name);
+		} else {
+			users = usService.findAll();
+		}
 		model.addAttribute("users", users);				
 		return "employee/employee-show-users.html";	
 	}
@@ -89,15 +91,40 @@ public class EmployeeController
 	@GetMapping(value="/books/showbooks")
 	public String showBooks(Model model,
 			@RequestParam (required=false) String title,
-			@RequestParam (required=false) String author,
-			@RequestParam (required=false) String showAllBooks) {
-		
+			@RequestParam (required=false) String author) {
 		List<Book> books;
-		if (showAllBooks == null) books = bookService.searchBooks(title, author);	
-		else books = bookService.findAll();
-		
+		if ((title == null || title.isEmpty()) && (author == null || author.isEmpty())) {
+			books = bookService.findAll();
+		} else {
+			books = bookService.searchBooks(title, author);
+		}		
 		model.addAttribute("books", books);
 		return "employee/employee-show-books.html";
+	}
+	
+	@GetMapping(value="/books/{isbn}")
+	public String viewBook(Model model, @PathVariable long isbn) {
+		Book book = bookService.findById(isbn);
+		model.addAttribute("book", book);
+		return "employee/view-book.html";
+	}
+	
+	@PostMapping(value="/books/{isbn}")
+	public String updateBook(@PathVariable long isbn, @RequestParam String title, @RequestParam String author) {
+		Book book = bookService.findById(isbn);
+		book.setTitle(title);
+		book.setAuthor(author);
+		bookService.save(book);
+		return "redirect:/employee/books/" + isbn;
+	}
+	
+	@PostMapping(value="/books/{isbn}/add-copy")
+	public String addBookCopy(@PathVariable long isbn) {
+		Book book = bookService.findById(isbn);
+		BookObj bookObj = new BookObj();
+		bookObj.setBook(book);
+		bookObjService.save(bookObj);
+		return "redirect:/employee/books/" + isbn;
 	}
 	
 	@GetMapping(value="/books/newbook")
