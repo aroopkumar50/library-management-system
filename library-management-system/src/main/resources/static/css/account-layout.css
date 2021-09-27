@@ -2,18 +2,19 @@
 
 /*----------------------- CONTENT LAYOUT ------------------------ */
 body {
-	background: url("https://wallpapercave.com/wp/wp8772714.jpg") repeat center fixed;
+	/* background: url("https://wallpapercave.com/wp/wp8772714.jpg") repeat center fixed; */
+	background: url("../../Images/account.jpg") repeat center fixed;
 	background-size: cover;
 	background-color: #bee4fa;
 	font-family: Helvetica, sans-serif;
 }
 
-.homeContent { 
+.homeContent {
 	position: fixed;
-   	top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center; 
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
 	border-radius: 5px;
 	padding: 25px;
 	background-color: #f1f2b3f2;
