@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 body {
-/*     background: url("/Images/library.jpg") no-repeat center center fixed; */
+    background: url("https://images5.alphacoders.com/808/thumb-1920-808254.jpg") repeat center fixed;
     background-color: #BEE4FA;
     background-size: cover;
     font-family: Helvetica, sans-serif;
@@ -48,7 +48,7 @@ input[type=submit] {
   width: 350px;
   height: 230px;	
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: #f1f2b3f2;
   padding: 20px;
 }
 
@@ -98,7 +98,7 @@ input[type=submit] {
   width: 470px;
   height: 380px;	
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #f1f2b3f2;
   padding:20px;
 }
 
@@ -142,7 +142,7 @@ input[type=submit].logoutButton {
   width: 250px;
   height: 130px;	
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: #f1f2b3f2;
   padding: 20px;
 }
 
@@ -175,6 +175,6 @@ input[type=submit].accountCreatedButton {
     width: 275px;
   	height: 110px;	
  	border-radius: 5px;
- 	background-color: #f2f2f2;
+ 	background-color: #f1f2b3f2;
   	padding: 20px;
 }
