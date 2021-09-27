@@ -1,20 +1,28 @@
 @charset "ISO-8859-1";
 
-/* .bgimg {
-	background-image: url("");
- 	min-height: 100%;
- 	background-position: center;
-	background-size: cover;
-} */
 /*----------------------- CONTENT LAYOUT ------------------------ */
 body {
+	/* background: url("https://wallpapercave.com/wp/wp8772714.jpg") repeat center fixed; */
+	background: url("../../Images/account.jpg") repeat center fixed;
+	background-size: cover;
 	background-color: #bee4fa;
 	font-family: Helvetica, sans-serif;
 }
 
+.homeContent {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	border-radius: 5px;
+	padding: 25px;
+	background-color: #f1f2b3f2;
+}
+
 .container {
 	border-radius: 5px;
-	background-color: whitesmoke;
+	background-color: #f1f2b3f2;
 	padding: 20px;
 	margin-top: 10px;
 	min-width: 10em;
@@ -24,7 +32,7 @@ body {
 
 .notify {
 	border-radius: 5px;
-	background-color: white;
+	background-color: #f1f2b3f2;
 	padding: 20px;
 	margin-top: 20px;
 	min-width: 1000px;
@@ -130,6 +138,10 @@ input[type="submit"], .submit-button {
 	border: 1px solid rgb(161, 155, 155);
 	padding: 8px;
 	font-size: 12px;
+}
+
+#tablestyle td {
+	background-color: whitesmoke;
 }
 
 #tablestyle tr:nth-child {
