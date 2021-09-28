@@ -57,10 +57,6 @@
 				<td th:text="${book.author}"></td>
 				<td style="width: 240px;">
 				    <a th:href="@{/user/books/{id}(id=${book.ISBN})}"><button style="width: 150px; margin-left: 3.5em" class="submit-button">View Book</button></a>
-					<!--<form th:action="@{#/employee/books/changebookinfo}" method="GET">
-						<input type="submit" value="Reserve Book" class="table"
-							style="width: 150px; margin-left: 3.5em" />
-					</form>-->
 				</td>
 			</tr>
 		</table>

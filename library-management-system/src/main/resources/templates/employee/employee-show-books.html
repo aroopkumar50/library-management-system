@@ -65,11 +65,6 @@
           <td th:text="${book.ISBN}"></td>
           <td th:text="${book.title}"></td>
           <td th:text="${book.author}"></td>
-          <!-- <td th:text="${book.releaseYear}"></td>
-          <td th:text="${book.edition}"></td>
-          <td th:text="${book.returnDate}"></td>
-          <td th:text="${book.startReservationDate}"></td>
-          <td th:text="${book.endReservationDate}"></td> -->
           <td style="width: 240px">
             <a th:href="@{/employee/books/{id}(id=${book.ISBN})}"><button type="button" class="submit-button">Change info</button></a>
             <form
